@@ -35,6 +35,8 @@ namespace timsTacos
       services.AddTransient<TacosRepository>();
       services.AddTransient<IngredientsService>();
       services.AddTransient<IngredientsRepository>();
+      services.AddTransient<TacoIngredientsService>();
+      services.AddTransient<TacoIngredientsRepository>();
     }
 
     private IDbConnection CreateDBContext()

@@ -7,10 +7,9 @@ namespace timsTacos.Models
     public string Name { get; set; }
   }
 
-
-  //helper class
-  public class TacoIngredient : Ingredient
+  public class TacoIngredientViewModel : Ingredient
   {
     public int TacoIngId { get; set; }
+    public string TacoName { get; set; }
   }
 }

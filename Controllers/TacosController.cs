@@ -11,9 +11,12 @@ namespace timsTacos.Controllers
   public class TacosController : ControllerBase
   {
     private readonly TacosService _service;
-    public TacosController(TacosService service)
+
+    private readonly TacoIngredientsService _tis;
+    public TacosController(TacosService service, TacoIngredientsService tis)
     {
       _service = service;
+      _tis = tis;
     }
 
     //GET
@@ -36,6 +39,19 @@ namespace timsTacos.Controllers
       try
       {
         return Ok(_service.Get(tacoId));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpGet("{tacoId}/ingredients")]
+    public ActionResult<TacoIngredientViewModel> GetIngredientsByTacoId(int tacoId)
+    {
+      try
+      {
+        return Ok(_tis.GetIngsByTacoId(tacoId));
       }
       catch (Exception e)
       {
